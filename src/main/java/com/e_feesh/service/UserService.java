@@ -10,7 +10,9 @@ import org.springframework.lang.Contract;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserService {
 
     private final UserRepository userRepository;
@@ -26,13 +28,14 @@ public class UserService {
     }
 
     public AuthResponseDTO register(AuthRequestDTO req) {
+        if (userRepository.findByUsername(req.getUsername()).isPresent()) {
+        throw new UsernameAlreadyExistsException("This username already exists.");
+        }
         User user = new User();
         user.setUsername(req.getUsername());
         user.setPassword(passwordEncoder.encode(req.getPassword()));
-        user.setRole("user_role");
-        if (userRepository.findByUsername(req.getUsername()).isPresent()) {
-            throw new UsernameAlreadyExistsException("This username already exists.");
-        }
+        user.setRole("ROLE_USER");
+
         User savedUser = userRepository.save(user);
         String token = jwtService.generateToken(savedUser);
         return new AuthResponseDTO(token);
