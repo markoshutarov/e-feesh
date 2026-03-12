@@ -28,6 +28,15 @@ public class GlobalExceptionHandler {
         ErrorResponse errorResponse = new ErrorResponse(400, ex.getBindingResult().getFieldError().getDefaultMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
     }
-
+    @ExceptionHandler(OrderNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleOrderNotFoundException(OrderNotFoundException exception){
+        ErrorResponse errorResponse = new ErrorResponse(404,exception.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+    }
+    @ExceptionHandler(EmptyOrderException.class)
+    public ResponseEntity<ErrorResponse> handleEmptyOrderException(EmptyOrderException exception){
+        ErrorResponse errorResponse=new ErrorResponse(400, exception.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+    }
 
 }
