@@ -26,6 +26,9 @@ public class Product {
     @Column( nullable = false)
     private Category category;
 
+    public Product() {
+
+    }
     public Product(String name, String description, Double price, Integer stock, Category category) {
         this.name = name;
         this.description = description;
@@ -34,9 +37,7 @@ public class Product {
         this.category = category;
     }
 
-    public Product() {
 
-    }
 
     public Long getId() {
         return id;
