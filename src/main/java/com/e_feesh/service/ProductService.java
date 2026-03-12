@@ -5,10 +5,13 @@ import com.e_feesh.dto.ProductResponseDTO;
 import com.e_feesh.exception.ProductNotFoundException;
 import com.e_feesh.model.Category;
 import com.e_feesh.model.Product;
+import com.e_feesh.model.User;
 import com.e_feesh.repository.ProductRepository;
+import com.e_feesh.repository.UserRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 
@@ -18,12 +21,16 @@ import java.util.Optional;
 public class ProductService {
 
     private final ProductRepository productRepository;
+    private final UserRepository userRepository;
 
-    public ProductService(ProductRepository productRepository){
+    public ProductService(ProductRepository productRepository, UserRepository userRepository){
         this.productRepository=productRepository;
+        this.userRepository = userRepository;
     }
 
     public Page<ProductResponseDTO> getAllProducts(int page, int size){
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userRepository.findByUsername(username).orElseThrow(()->new RuntimeException("User not found!"));
         Pageable pageable = PageRequest.of(page,size);
         return productRepository.findAll(pageable)
                 .map(product -> new ProductResponseDTO(
