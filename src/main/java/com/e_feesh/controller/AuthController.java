@@ -2,7 +2,6 @@ package com.e_feesh.controller;
 
 import com.e_feesh.dto.AuthRequestDTO;
 import com.e_feesh.dto.AuthResponseDTO;
-import com.e_feesh.model.User;
 import com.e_feesh.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -18,16 +17,17 @@ public class AuthController {
 
     private final UserService userService;
 
-    public AuthController(UserService userService){
-        this.userService=userService;
+    public AuthController(UserService userService) {
+        this.userService = userService;
     }
+
     @PostMapping("/register")
-    public ResponseEntity<AuthResponseDTO> register(@Valid @RequestBody AuthRequestDTO req){
+    public ResponseEntity<AuthResponseDTO> register(@Valid @RequestBody AuthRequestDTO req) {
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.register(req));
     }
 
     @PostMapping("/login")
-    public ResponseEntity<AuthResponseDTO> login(@Valid @RequestBody AuthRequestDTO req){
+    public ResponseEntity<AuthResponseDTO> login(@Valid @RequestBody AuthRequestDTO req) {
         return ResponseEntity.ok(userService.login(req));
     }
 

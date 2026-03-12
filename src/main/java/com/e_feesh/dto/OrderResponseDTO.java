@@ -1,6 +1,5 @@
 package com.e_feesh.dto;
 
-import com.e_feesh.model.OrderItem;
 import com.e_feesh.model.OrderStatus;
 
 import java.time.LocalDateTime;

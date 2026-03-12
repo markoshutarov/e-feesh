@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class EFeeshApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(EFeeshApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(EFeeshApplication.class, args);
+    }
 
 }

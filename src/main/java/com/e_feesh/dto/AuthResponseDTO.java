@@ -1,9 +1,5 @@
 package com.e_feesh.dto;
 
-import lombok.Getter;
-import lombok.Setter;
-
-
 public class AuthResponseDTO {
 
     private String token;

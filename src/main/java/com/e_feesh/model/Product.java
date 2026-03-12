@@ -2,7 +2,6 @@ package com.e_feesh.model;
 
 
 import jakarta.persistence.*;
-import lombok.Getter;
 
 @Entity
 @Table(name = "products")
@@ -23,12 +22,13 @@ public class Product {
     @Column(nullable = false)
     private Integer stock;
 
-    @Column( nullable = false)
+    @Column(nullable = false)
     private Category category;
 
     public Product() {
 
     }
+
     public Product(String name, String description, Double price, Integer stock, Category category) {
         this.name = name;
         this.description = description;
@@ -36,7 +36,6 @@ public class Product {
         this.stock = stock;
         this.category = category;
     }
-
 
 
     public Long getId() {

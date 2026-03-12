@@ -1,9 +1,5 @@
 package com.e_feesh.dto;
 
-import jakarta.validation.constraints.NotBlank;
-
-import java.util.List;
-
 public class OrderItemResponseDTO {
 
     private String productName;

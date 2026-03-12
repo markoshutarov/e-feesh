@@ -16,11 +16,11 @@ public class OrderRequestDTO {
         this.items = items;
     }
 
-    public List<OrderItemRequestDTO> getOrderItemRequestDTOS() {
+    public List<OrderItemRequestDTO> getItems() {
         return items;
     }
 
-    public void setOrderItemRequestDTOS(List<OrderItemRequestDTO> items) {
+    public void setItems(List<OrderItemRequestDTO> items) {
         this.items = items;
     }
 }

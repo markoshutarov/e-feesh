@@ -6,7 +6,6 @@ import com.e_feesh.exception.UsernameAlreadyExistsException;
 import com.e_feesh.model.User;
 import com.e_feesh.repository.UserRepository;
 import com.e_feesh.security.JwtService;
-import org.springframework.lang.Contract;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -29,7 +28,7 @@ public class UserService {
 
     public AuthResponseDTO register(AuthRequestDTO req) {
         if (userRepository.findByUsername(req.getUsername()).isPresent()) {
-        throw new UsernameAlreadyExistsException("This username already exists.");
+            throw new UsernameAlreadyExistsException("This username already exists.");
         }
         User user = new User();
         user.setUsername(req.getUsername());

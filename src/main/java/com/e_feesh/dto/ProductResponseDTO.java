@@ -2,8 +2,6 @@ package com.e_feesh.dto;
 
 
 import com.e_feesh.model.Category;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 
 public class ProductResponseDTO {
 
@@ -23,7 +21,7 @@ public class ProductResponseDTO {
     }
 
     public ProductResponseDTO(Long id, String name, String description, Double price, Integer stock, Category category) {
-        this.id=id;
+        this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
