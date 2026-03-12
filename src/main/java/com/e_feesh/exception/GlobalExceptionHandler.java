@@ -12,4 +12,9 @@ public class GlobalExceptionHandler {
         ErrorResponse errorResponse=new ErrorResponse(409, exception.getMessage());
         return ResponseEntity.status(HttpStatus.CONFLICT).body(errorResponse);
     }
+    @ExceptionHandler(ProductNotFoundException.class)
+    public ResponseEntity<ErrorResponse> ProductNotFoundException(ProductNotFoundException exception){
+        ErrorResponse errorResponse = new ErrorResponse(404,exception.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+    }
 }
