@@ -1,5 +1,6 @@
 package com.e_feesh.dto;
 
+import com.e_feesh.model.OrderItem;
 import com.e_feesh.model.OrderStatus;
 
 import java.time.LocalDateTime;
@@ -15,17 +16,17 @@ public class OrderResponseDTO {
 
     private LocalDateTime createdAt;
 
-    private List<OrderItemResponseDTO> orderItemResponseDTOS;
+    private List<OrderItemResponseDTO> OrderItems;
 
     public OrderResponseDTO() {
     }
 
-    public OrderResponseDTO(Long id, OrderStatus status, Double totalPrice, LocalDateTime createdAt, List<OrderItemResponseDTO> orderItemResponseDTOS) {
+    public OrderResponseDTO(Long id, OrderStatus status, Double totalPrice, LocalDateTime createdAt, List<OrderItemResponseDTO> OrderItems) {
         this.id = id;
         this.status = status;
         this.totalPrice = totalPrice;
         this.createdAt = createdAt;
-        this.orderItemResponseDTOS = orderItemResponseDTOS;
+        this.OrderItems = OrderItems;
     }
 
     public Long getId() {
@@ -60,11 +61,11 @@ public class OrderResponseDTO {
         this.createdAt = createdAt;
     }
 
-    public List<OrderItemResponseDTO> getOrderItemResponseDTOS() {
-        return orderItemResponseDTOS;
+    public List<OrderItemResponseDTO> getOrderItems() {
+        return OrderItems;
     }
 
-    public void setOrderItemResponseDTOS(List<OrderItemResponseDTO> orderItemResponseDTOS) {
-        this.orderItemResponseDTOS = orderItemResponseDTOS;
+    public void setOrderItems(List<OrderItemResponseDTO> orderItems) {
+        OrderItems = orderItems;
     }
 }
