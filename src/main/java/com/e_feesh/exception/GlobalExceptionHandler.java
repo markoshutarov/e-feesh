@@ -18,11 +18,6 @@ public class GlobalExceptionHandler {
         ErrorResponse errorResponse = new ErrorResponse(404,exception.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
     }
-    @ExceptionHandler(CartItemNotFoundException.class)
-    public ResponseEntity<ErrorResponse> handleCartItemNotFoundException(CartItemNotFoundException exception){
-        ErrorResponse errorResponse = new ErrorResponse(404,exception.getMessage());
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
-    }
     @ExceptionHandler(InsufficientStockException.class)
     public ResponseEntity<ErrorResponse> handleInsufficientStockException(InsufficientStockException exception){
         ErrorResponse errorResponse=new ErrorResponse(400, exception.getMessage());
